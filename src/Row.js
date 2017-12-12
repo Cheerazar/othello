@@ -11,23 +11,23 @@ const RowContainer = glamorous.div({
   marginBottom: 5,
 });
 
-const Row = ({ numOfCells, row }) => {
-  const cells = [];
+const Row = ({ rowNumber, row }) => (
+  <RowContainer>
+    {row.map(([cellValue], cellNumber) => {
+      const cellId = `r${rowNumber}-c${cellNumber}`;
 
-  for (let cellNumber = 0; cellNumber < numOfCells; cellNumber += 1) {
-    const cellId = `r${row}-c${cellNumber}`;
-    cells.push(<Cell
-      key={cellId}
-      id={cellId}
-    />);
-  }
-
-  return <RowContainer>{cells}</RowContainer>;
-};
+      return (<Cell
+        key={cellId}
+        cellValue={cellValue}
+        id={cellId}
+      />);
+    })}
+  </RowContainer>
+);
 
 Row.propTypes = {
-  numOfCells: PropTypes.number.isRequired,
-  row: PropTypes.number.isRequired,
+  rowNumber: PropTypes.number.isRequired,
+  row: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string).isRequired).isRequired,
 };
 
 export default Row;

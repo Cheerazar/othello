@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import glamorous from 'glamorous';
 
 import Row from './Row';
@@ -12,18 +12,30 @@ const BoardContainer = glamorous.div({
 
 const numberOfRowsAndCells = 8;
 
-const Board = () => {
-  const rows = [];
+class Board extends Component {
+  constructor (props) {
+    super(props);
 
-  for (let rowNumber = 0; rowNumber < numberOfRowsAndCells; rowNumber += 1) {
-    rows.push(<Row
-      key={`r-${rowNumber}`}
-      row={rowNumber}
-      numOfCells={numberOfRowsAndCells}
-    />);
+    this.state = {
+      board: new Array(numberOfRowsAndCells).fill(new Array(numberOfRowsAndCells).fill([])),
+    };
   }
 
-  return <BoardContainer>{rows}</BoardContainer>;
-};
+  render () {
+    const { board } = this.state;
+
+    return (
+      <BoardContainer>
+        {board.map((row, rowNumber) => (
+          <Row
+            key={`r-${rowNumber}`}
+            row={row}
+            rowNumber={rowNumber}
+          />
+        ))}
+      </BoardContainer>
+    );
+  }
+}
 
 export default Board;

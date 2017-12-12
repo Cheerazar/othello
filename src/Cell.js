@@ -1,7 +1,10 @@
 import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
-const Cell = () => (
+import Piece from './Piece';
+
+const Cell = ({ cellValue, id }) => (
   <glamorous.Div
     css={{
       borderStyle: 'solid',
@@ -11,7 +14,21 @@ const Cell = () => (
       width: 50,
       marginRight: 5,
     }}
-  />
+  >
+    {cellValue && <Piece
+      cellValue={cellValue}
+      id={id}
+    />}
+  </glamorous.Div>
 );
+
+Cell.defaultProps = {
+  cellValue: '',
+};
+
+Cell.propTypes = {
+  cellValue: PropTypes.string,
+  id: PropTypes.string.isRequired,
+};
 
 export default Cell;
