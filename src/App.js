@@ -4,6 +4,7 @@ import glamorous from 'glamorous';
 import Board from './Board';
 
 import makeBoard from './utils/makeBoard';
+import calculateNewBoard from './utils/calculateNewBoard';
 
 const AppContainer = glamorous.div({
   maxWidth: 1080,
@@ -23,12 +24,16 @@ class App extends Component {
   }
 
   handleCellClick = (id) => {
-    const row = id[1];
-    const cell = id[4];
+    const row = parseInt(id[1], 10);
+    const cell = parseInt(id[4], 10);
     const { board, currentPlayer } = this.state;
 
-    const newBoard = [...board];
-    newBoard[row][cell] = currentPlayer;
+    const newBoard = calculateNewBoard({
+      currentPlayer,
+      startRow: row,
+      startCell: cell,
+      board: [...board],
+    });
 
     this.setState({
       board: newBoard,
