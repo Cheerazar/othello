@@ -11,18 +11,22 @@ const BoardContainer = glamorous.div({
   marginTop: 20,
 });
 
-const Board = ({ board }) => (
+const Board = ({ board, handleCellClick }) => (
   <BoardContainer>
-    {board.map((row, rowNumber) => (<Row
-      key={`r-${rowNumber}`}
-      row={row}
-      rowNumber={rowNumber}
-    />))}
+    {board.map((row, rowNumber) => (
+      <Row
+        key={`r-${rowNumber}`}
+        row={row}
+        rowNumber={rowNumber}
+        handleCellClick={handleCellClick}
+      />
+    ))}
   </BoardContainer>
 );
 
 Board.propTypes = {
   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string.isRequired).isRequired).isRequired,
+  handleCellClick: PropTypes.func.isRequired,
 };
 
 export default Board;

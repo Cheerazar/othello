@@ -11,21 +11,25 @@ const RowContainer = glamorous.div({
   marginBottom: 5,
 });
 
-const Row = ({ rowNumber, row }) => (
+const Row = ({ handleCellClick, rowNumber, row }) => (
   <RowContainer>
     {row.map((cellValue, cellNumber) => {
       const cellId = `r${rowNumber}-c${cellNumber}`;
 
-      return (<Cell
-        key={cellId}
-        cellValue={cellValue}
-        id={cellId}
-      />);
+      return (
+        <Cell
+          key={cellId}
+          cellValue={cellValue}
+          id={cellId}
+          handleCellClick={handleCellClick}
+        />
+      );
     })}
   </RowContainer>
 );
 
 Row.propTypes = {
+  handleCellClick: PropTypes.func.isRequired,
   rowNumber: PropTypes.number.isRequired,
   row: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };

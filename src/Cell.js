@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Piece from './Piece';
 
-const Cell = ({ cellValue, id }) => (
+const Cell = ({ cellValue, handleCellClick, id }) => (
   <glamorous.Div
     css={{
       borderStyle: 'solid',
@@ -14,6 +14,7 @@ const Cell = ({ cellValue, id }) => (
       width: 50,
       marginRight: 5,
     }}
+    onClick={() => handleCellClick(id)}
   >
     {cellValue && <Piece
       cellValue={cellValue}
@@ -24,6 +25,7 @@ const Cell = ({ cellValue, id }) => (
 
 Cell.propTypes = {
   cellValue: PropTypes.string.isRequired,
+  handleCellClick: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
 };
 

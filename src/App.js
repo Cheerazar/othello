@@ -22,6 +22,20 @@ class App extends Component {
     };
   }
 
+  handleCellClick = (id) => {
+    const row = id[1];
+    const cell = id[4];
+    const { board, currentPlayer } = this.state;
+
+    const newBoard = [...board];
+    newBoard[row][cell] = currentPlayer;
+
+    this.setState({
+      board: newBoard,
+      currentPlayer: currentPlayer === 'red' ? 'blue' : 'red',
+    });
+  };
+
   render () {
     const { board, currentPlayer } = this.state;
 
@@ -36,7 +50,10 @@ class App extends Component {
         >
           Othello
         </glamorous.Header>
-        <Board board={board} />
+        <Board
+          board={board}
+          handleCellClick={this.handleCellClick}
+        />
         <glamorous.Div
           css={{
             textAlign: 'center',
