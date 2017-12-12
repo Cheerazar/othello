@@ -22,7 +22,7 @@ const Board = ({ board }) => (
 );
 
 Board.propTypes = {
-  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string).isRequired).isRequired).isRequired,
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string.isRequired).isRequired).isRequired,
 };
 
 export default Board;

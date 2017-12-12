@@ -13,7 +13,7 @@ const RowContainer = glamorous.div({
 
 const Row = ({ rowNumber, row }) => (
   <RowContainer>
-    {row.map(([cellValue], cellNumber) => {
+    {row.map((cellValue, cellNumber) => {
       const cellId = `r${rowNumber}-c${cellNumber}`;
 
       return (<Cell
@@ -27,7 +27,7 @@ const Row = ({ rowNumber, row }) => (
 
 Row.propTypes = {
   rowNumber: PropTypes.number.isRequired,
-  row: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string).isRequired).isRequired,
+  row: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 };
 
 export default Row;

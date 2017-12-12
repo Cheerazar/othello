@@ -22,12 +22,8 @@ const Cell = ({ cellValue, id }) => (
   </glamorous.Div>
 );
 
-Cell.defaultProps = {
-  cellValue: '',
-};
-
 Cell.propTypes = {
-  cellValue: PropTypes.string,
+  cellValue: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
 

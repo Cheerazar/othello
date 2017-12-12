@@ -15,12 +15,9 @@ const Piece = ({ cellValue, id }) => (
   />
 );
 
-Piece.defaultProps = {
-  cellValue: '',
-};
-
 Piece.propTypes = {
-  cellValue: PropTypes.string,
+  cellValue: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default Piece;

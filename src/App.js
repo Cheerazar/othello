@@ -3,6 +3,8 @@ import glamorous from 'glamorous';
 
 import Board from './Board';
 
+import makeBoard from './utils/makeBoard';
+
 const AppContainer = glamorous.div({
   maxWidth: 1080,
   margin: 'auto',
@@ -15,7 +17,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      board: new Array(numberOfRowsAndCells).fill(new Array(numberOfRowsAndCells).fill([])),
+      board: makeBoard(numberOfRowsAndCells),
       currentPlayer: 'red',
     };
   }
