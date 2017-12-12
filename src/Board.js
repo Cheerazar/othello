@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 import Row from './Row';
 
@@ -10,32 +11,18 @@ const BoardContainer = glamorous.div({
   marginTop: 20,
 });
 
-const numberOfRowsAndCells = 8;
+const Board = ({ board }) => (
+  <BoardContainer>
+    {board.map((row, rowNumber) => (<Row
+      key={`r-${rowNumber}`}
+      row={row}
+      rowNumber={rowNumber}
+    />))}
+  </BoardContainer>
+);
 
-class Board extends Component {
-  constructor (props) {
-    super(props);
-
-    this.state = {
-      board: new Array(numberOfRowsAndCells).fill(new Array(numberOfRowsAndCells).fill([])),
-    };
-  }
-
-  render () {
-    const { board } = this.state;
-
-    return (
-      <BoardContainer>
-        {board.map((row, rowNumber) => (
-          <Row
-            key={`r-${rowNumber}`}
-            row={row}
-            rowNumber={rowNumber}
-          />
-        ))}
-      </BoardContainer>
-    );
-  }
-}
+Board.propTypes = {
+  board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string).isRequired).isRequired).isRequired,
+};
 
 export default Board;
