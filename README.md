@@ -8,7 +8,6 @@ To get started with this app:
 
 Things that are next on my list to do are:
 
-1. Add the flip mechanic in when placing a piece
 1. Only allow valid moves to be played
 1. Add additional styling to create a better user experience
 1. Add tests for components
