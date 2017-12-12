@@ -13,8 +13,9 @@ const Cell = ({ cellValue, handleCellClick, id }) => (
       height: 50,
       width: 50,
       marginRight: 5,
+      cursor: cellValue !== '' ? 'not-allowed' : 'pointer',
     }}
-    onClick={() => handleCellClick(id)}
+    onClick={cellValue !== '' ? () => {} : () => handleCellClick(id)}
   >
     {cellValue && <Piece
       cellValue={cellValue}

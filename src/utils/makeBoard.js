@@ -13,5 +13,6 @@ export default (numberOfRowsAndCells) => {
       }
     }
   }
+
   return board;
 };
